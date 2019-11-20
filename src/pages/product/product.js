@@ -4,13 +4,15 @@ import ProductHome from './home'
 import ProductAddUpdate from './addupdate'
 import ProductDetail from './detail'
 
+import './product.less'
+
 export default class product extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/product'>ProductHome</Route>
-        <Route path='/product/addupdate'>ProductAddUpdate</Route>
-        <Route path='/product/detail'>ProductDetail</Route>
+        <Route exact path='/product' component={ProductHome}></Route>
+        <Route path='/product/addupdate' component={ProductAddUpdate}></Route>
+        <Route path='/product/detail' component={ProductDetail}></Route>
         <Redirect to='/product'/>
       </Switch>
     )
