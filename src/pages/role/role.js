@@ -17,10 +17,10 @@ import storageUtils from "../../utils/storageUtils";
 export default class role extends Component {
 
   state = {
-    roles: [], // 所有角色的列表
-    role: {}, // 选中的role
-    isShowAdd: false, // 是否显示添加界面
-    isShowAuth: false, // 是否显示设置权限界面
+    roles: [], 
+    role: {},
+    isShowAdd: false, 
+    isShowAuth: false, 
   }
 
   constructor (props) {
@@ -32,21 +32,21 @@ export default class role extends Component {
   initColumn = () => {
     this.columns = [
       {
-        title: '角色名称',
+        title: 'Role name',
         dataIndex: 'name'
       },
       {
-        title: '创建时间',
+        title: 'Created Time',
         dataIndex: 'create_time',
         render: (create_time) => formateDate(create_time)
       },
       {
-        title: '授权时间',
+        title: 'Authorized time',
         dataIndex: 'auth_time',
         render: formateDate
       },
       {
-        title: '授权人',
+        title: 'Authorizer',
         dataIndex: 'auth_name'
       },
     ]
@@ -64,9 +64,9 @@ export default class role extends Component {
 
   onRow = (role) => {
     return {
-      onClick: event => { // 点击行
+      onClick: event => { 
         console.log('row onClick()', role)
-        // alert('点击行')
+        
         this.setState({
           role
         })
@@ -87,14 +87,14 @@ export default class role extends Component {
 
         const result = await reqAddRole(roleName)
         if (result.status===0) {
-          message.success('添加角色成功')
+          message.success('Add role successed')
           const role = result.data
           this.setState(state => ({
             roles: [...state.roles, role]
           }))
 
         } else {
-          message.success('添加角色失败')
+          message.success('Add role failed')
         }
 
       }
@@ -119,9 +119,9 @@ export default class role extends Component {
         memoryUtils.user = {}
         storageUtils.removeUser()
         this.props.history.replace('/login')
-        message.success('当前用户角色权限成功')
+        message.success('Set the current user role permission successfully')
       } else {
-        message.success('设置角色权限成功')
+        message.success('Set user role permission successfully')
         this.setState({
           roles: [...this.state.roles]
         })
@@ -142,8 +142,8 @@ export default class role extends Component {
 
     const title = (
       <span>
-        <Button type='primary' onClick={() => this.setState({isShowAdd: true})}>创建角色</Button> &nbsp;&nbsp;
-        <Button type='primary' disabled={!role._id} onClick={() => this.setState({isShowAuth: true})}>设置角色权限</Button>
+        <Button type='primary' onClick={() => this.setState({isShowAdd: true})}>Add role</Button> &nbsp;&nbsp;
+        <Button type='primary' disabled={!role._id} onClick={() => this.setState({isShowAuth: true})}>Set Role Permissions</Button>
       </span>
     )
 
@@ -169,7 +169,7 @@ export default class role extends Component {
         />
 
         <Modal
-          title="添加角色"
+          title="Add Role"
           visible={isShowAdd}
           onOk={this.addRole}
           onCancel={() => {
@@ -183,7 +183,7 @@ export default class role extends Component {
         </Modal>
 
         <Modal
-          title="设置角色权限"
+          title="Set Role Permissions"
           visible={isShowAuth}
           onOk={this.updateRole}
           onCancel={() => {

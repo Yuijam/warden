@@ -33,7 +33,7 @@ class AddForm extends Component {
               initialValue: parentId
             })(
               <Select>
-                <Option value='0'>一级分类</Option>
+                <Option value='0'>First classification</Option>
                 {
                   categorys.map(c => <Option value={c._id} key={c._id}>{c.name}</Option>)
                 }
@@ -48,10 +48,10 @@ class AddForm extends Component {
             getFieldDecorator('categoryName', {
               initialValue: '',
               rules: [
-                {required: true, message: '分类名称必须输入'}
+                {required: true, message: 'Category name must be entered'}
               ]
             })(
-              <Input placeholder='请输入分类名称'/>
+              <Input placeholder='Please enter a category name'/>
             )
           }
         </Item>

@@ -1,22 +1,22 @@
 const menuList = [
   {
-    title: '首页', 
+    title: 'Home', 
     key: '/home', 
     icon: 'home',
     isPublic: true, 
   },
   {
-    title: '商品',
+    title: 'Product',
     key: '/products',
     icon: 'appstore',
     children: [ 
       {
-        title: '品类管理',
+        title: 'Category Manage',
         key: '/category',
         icon: 'bars'
       },
       {
-        title: '商品管理',
+        title: 'Product Manage',
         key: '/product',
         icon: 'tool'
       },
@@ -24,12 +24,12 @@ const menuList = [
   },
 
   {
-    title: '用户管理',
+    title: 'User Manage',
     key: '/user',
     icon: 'user'
   },
   {
-    title: '角色管理',
+    title: 'Role Manage',
     key: '/role',
     icon: 'safety',
   },

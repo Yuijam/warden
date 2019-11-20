@@ -15,27 +15,27 @@ import UpdateForm from './update-form'
 export default class category extends Component {
 
   state = {
-    loading: false, // 是否正在获取数据中
-    categorys: [], // 一级分类列表
-    subCategorys: [], // 二级分类列表
-    parentId: '0', // 当前需要显示的分类列表的父分类ID
-    parentName: '', // 当前需要显示的分类列表的父分类名称
-    showStatus: 0, // 标识添加/更新的确认框是否显示, 0: 都不显示, 1: 显示添加, 2: 显示更新
+    loading: false, 
+    categorys: [],
+    subCategorys: [], 
+    parentId: '0', 
+    parentName: '',
+    showStatus: 0, 
   }
 
   initColumns = () => {
     this.columns = [
       {
-        title: '分类的名称',
-        dataIndex: 'name', // 显示数据对应的属性名
+        title: 'category name',
+        dataIndex: 'name', 
       },
       {
-        title: '操作',
+        title: 'options',
         width: 300,
-        render: (category) => ( // 返回需要显示的界面标签
+        render: (category) => ( 
           <span>
-            <LinkButton onClick={() => this.showUpdate(category)}>修改分类</LinkButton>
-            {this.state.parentId==='0' ? <LinkButton onClick={() => this.showSubCategorys(category)}>查看子分类</LinkButton> : null}
+            <LinkButton onClick={() => this.showUpdate(category)}>Modify category</LinkButton>
+            {this.state.parentId==='0' ? <LinkButton onClick={() => this.showSubCategorys(category)}>View subcategories</LinkButton> : null}
 
           </span>
         )
@@ -81,7 +81,7 @@ export default class category extends Component {
         })
       }
     } else {
-      message.error('获取分类列表失败')
+      message.error('Failed to get list of categories')
     }
   }
 
@@ -161,9 +161,9 @@ export default class category extends Component {
     
     const category = this.category || {} 
 
-    const title = parentId === '0' ? '一级分类列表' : (
+    const title = parentId === '0' ? 'First classification' : (
       <span>
-        <LinkButton onClick={this.showCategorys}>一级分类列表</LinkButton>
+        <LinkButton onClick={this.showCategorys}>First classification</LinkButton>
         <Icon type='arrow-right' style={{marginRight: 5}}/>
         <span>{parentName}</span>
       </span>
@@ -172,7 +172,7 @@ export default class category extends Component {
     const extra = (
       <Button type='primary' onClick={this.showAdd}>
         <Icon type='plus'/>
-        添加
+        Add
       </Button>
     )
     return (
@@ -187,7 +187,7 @@ export default class category extends Component {
         />
 
         <Modal
-          title="添加分类"
+          title="Add category"
           visible={showStatus===1}
           onOk={this.addCategory}
           onCancel={this.handleCancel}
@@ -200,7 +200,7 @@ export default class category extends Component {
         </Modal>
 
         <Modal
-          title="更新分类"
+          title="Update category"
           visible={showStatus===2}
           onOk={this.updateCategory}
           onCancel={this.handleCancel}

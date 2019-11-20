@@ -14,42 +14,42 @@ import UserForm from './user-form'
 export default class user extends Component {
 
   state = {
-    users: [], // 所有用户列表
-    roles: [], // 所有角色列表
-    isShow: false, // 是否显示确认框
+    users: [], 
+    roles: [], 
+    isShow: false, 
   }
 
   initColumns = () => {
     this.columns = [
       {
-        title: '用户名',
+        title: 'Username',
         dataIndex: 'username'
       },
       {
-        title: '邮箱',
+        title: 'Email',
         dataIndex: 'email'
       },
 
       {
-        title: '电话',
+        title: 'Phone Number',
         dataIndex: 'phone'
       },
       {
-        title: '注册时间',
+        title: 'Registration Time',
         dataIndex: 'create_time',
         render: formateDate
       },
       {
-        title: '所属角色',
+        title: 'Role',
         dataIndex: 'role_id',
         render: (role_id) => this.roleNames[role_id]
       },
       {
-        title: '操作',
+        title: 'Option',
         render: (user) => (
           <span>
-            <LinkButton onClick={() => this.showUpdate(user)}>修改</LinkButton>
-            <LinkButton onClick={() => this.deleteUser(user)}>删除</LinkButton>
+            <LinkButton onClick={() => this.showUpdate(user)}>Modify</LinkButton>
+            <LinkButton onClick={() => this.deleteUser(user)}>Delete</LinkButton>
           </span>
         )
       },
@@ -78,11 +78,11 @@ export default class user extends Component {
 
   deleteUser = (user) => {
     Modal.confirm({
-      title: `确认删除${user.username}吗?`,
+      title: `Are you sure delete ${user.username}?`,
       onOk: async () => {
         const result = await reqDeleteUser(user._id)
         if(result.status===0) {
-          message.success('删除用户成功!')
+          message.success('Delete Successed!')
           this.getUsers()
         }
       }
@@ -101,7 +101,7 @@ export default class user extends Component {
 
     const result = await reqAddOrUpdateUser(user)
     if(result.status===0) {
-      message.success(`${this.user ? '修改' : '添加'}用户成功`)
+      message.success(`${this.user ? 'Modify' : 'Add'} user successed`)
       this.getUsers()
     }
   }
@@ -130,7 +130,7 @@ export default class user extends Component {
     const {users, roles, isShow} = this.state
     const user = this.user || {}
 
-    const title = <Button type='primary' onClick={this.showAdd}>创建用户</Button>
+    const title = <Button type='primary' onClick={this.showAdd}>Add User</Button>
 
     return (
       <Card title={title}>
@@ -143,7 +143,7 @@ export default class user extends Component {
         />
 
         <Modal
-          title={user._id ? '修改用户' : '添加用户'}
+          title={user._id ? 'Modify User' : 'Add User'}
           visible={isShow}
           onOk={this.addOrUpdateUser}
           onCancel={() => {

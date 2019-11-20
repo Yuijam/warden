@@ -52,7 +52,7 @@ class Header extends Component {
 
   logout = () => {
     Modal.confirm({
-      content: '确定退出吗?',
+      content: 'Are you sure to exit?',
       onOk: () => {
         console.log('OK', this)
         storageUtils.removeUser()
@@ -76,8 +76,8 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="header-top">
-          <span>欢迎, {username}</span>
-          <LinkButton onClick={this.logout}>退出</LinkButton>
+          <span>Welcome {username}</span>
+          <LinkButton onClick={this.logout}>Logout</LinkButton>
         </div>
         <div className="header-bottom">
           <div className="header-bottom-left">{title}</div>
