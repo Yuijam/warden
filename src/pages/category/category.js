@@ -161,9 +161,9 @@ export default class category extends Component {
     
     const category = this.category || {} 
 
-    const title = parentId === '0' ? 'First classification' : (
+    const title = parentId === '0' ? 'First Classification' : (
       <span>
-        <LinkButton onClick={this.showCategorys}>First classification</LinkButton>
+        <LinkButton onClick={this.showCategorys}>First Classification</LinkButton>
         <Icon type='arrow-right' style={{marginRight: 5}}/>
         <span>{parentName}</span>
       </span>

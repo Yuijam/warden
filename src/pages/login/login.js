@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './login.less'
 // import logo from '../../assets/images/logo.png'
-import logo from '../../assets/images/logo512.png'
+import logo from '../../assets/images/react.svg'
 // import logo from '../../logo.svg'
 import {reqLogin} from '../../api'
 import memoryUtils from '../../utils/memoryUtils'

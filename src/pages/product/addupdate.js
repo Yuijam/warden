@@ -60,7 +60,7 @@ class ProductAddUpdate extends Component {
     if (value*1 > 0) {
       callback() // 验证通过
     } else {
-      callback('价格必须大于0') // 验证没通过
+      callback('Price must be greater than 0') // 验证没通过
     }
   }
 
@@ -110,10 +110,10 @@ class ProductAddUpdate extends Component {
         const result = await reqAddOrUpdateProduct(product)
 
         if (result.status===0) {
-          message.success(`${this.isUpdate ? '更新' : '添加'}商品成功!`)
+          message.success(`${this.isUpdate ? 'Update' : 'Add'} Product Successed!`)
           this.props.history.goBack()
         } else {
-          message.error(`${this.isUpdate ? '更新' : '添加'}商品失败!`)
+          message.error(`${this.isUpdate ? 'Update' : 'Add'} Product Failed!`)
         }
       }
     })
@@ -165,7 +165,7 @@ class ProductAddUpdate extends Component {
         <LinkButton onClick={() => this.props.history.goBack()}>
           <Icon type='arrow-left' style={{fontSize: 20}}/>
         </LinkButton>
-        <span>{isUpdate ? '修改商品' : '添加商品'}</span>
+        <span>{isUpdate ? 'Modify Product' : 'Add Product'}</span>
       </span>
     )
 
@@ -174,64 +174,64 @@ class ProductAddUpdate extends Component {
     return (
       <Card title={title}>
         <Form {...formItemLayout}>
-          <Item label="商品名称">
+          <Item label="Name">
             {
               getFieldDecorator('name', {
                 initialValue: product.name,
                 rules: [
-                  {required: true, message: '必须输入商品名称'}
+                  {required: true, message: 'Must enter the product name'}
                 ]
-              })(<Input placeholder='请输入商品名称'/>)
+              })(<Input placeholder='Please enter the product name'/>)
             }
           </Item>
-          <Item label="商品描述">
+          <Item label="Description">
             {
               getFieldDecorator('desc', {
                 initialValue: product.desc,
                 rules: [
-                  {required: true, message: '必须输入商品描述'}
+                  {required: true, message: 'Must enter a description of the product'}
                 ]
-              })(<TextArea placeholder="请输入商品描述" autoSize={{ minRows: 2, maxRows: 6 }} />)
+              })(<TextArea placeholder="Please enter a description of the product" autoSize={{ minRows: 2, maxRows: 6 }} />)
             }
 
           </Item>
-          <Item label="商品价格">
+          <Item label="Price">
 
             {
               getFieldDecorator('price', {
                 initialValue: product.price,
                 rules: [
-                  {required: true, message: '必须输入商品价格'},
+                  {required: true, message: 'Must enter the price of the product'},
                   {validator: this.validatePrice}
                 ]
-              })(<Input type='number' placeholder='请输入商品价格' addonAfter='元'/>)
+              })(<Input type='number' placeholder='Please enter the price of the product' addonAfter='$'/>)
             }
           </Item>
-          <Item label="商品分类">
+          <Item label="Category">
             {
               getFieldDecorator('categoryIds', {
                 initialValue: categoryIds,
                 rules: [
-                  {required: true, message: '必须指定商品分类'},
+                  {required: true, message: 'Product classification must be specified'},
                 ]
               })(
                 <Cascader
-                  placeholder='请指定商品分类'
-                  options={this.state.options}  /*需要显示的列表数据数组*/
-                  loadData={this.loadData} /*当选择某个列表项, 加载下一级列表的监听回调*/
+                  placeholder='Please specify the product classification'
+                  options={this.state.options}  
+                  loadData={this.loadData} 
                 />
               )
             }
 
           </Item>
-          <Item label="商品图片">
+          <Item label="Picture">
             <PicturesWall ref={this.pw} imgs={imgs}/>
           </Item>
-          <Item label="商品详情" labelCol={{span: 2}} wrapperCol={{span: 20}}>
+          <Item label="Details" labelCol={{span: 2}} wrapperCol={{span: 20}}>
             <RichTextEditor ref={this.editor} detail={detail}/>
           </Item>
           <Item>
-            <Button type='primary' onClick={this.submit}>提交</Button>
+            <Button type='primary' onClick={this.submit}>Submit</Button>
           </Item>
         </Form>
       </Card>

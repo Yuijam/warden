@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import {Menu, Icon} from 'antd';
 
-import logo from '../../assets/images/logo512.png'
+import logo from '../../assets/images/react-1.svg'
 // import logo from '../../logo.svg'
 import menuList from '../../config/menuConfig'
 import './index.less'

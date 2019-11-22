@@ -14,8 +14,8 @@ const Item = List.Item
 export default class ProductDetail extends Component {
 
   state = {
-    cName1: '', // 一级分类名称
-    cName2: '', // 二级分类名称
+    cName1: '', 
+    cName2: '', 
   }
 
   async componentDidMount () {
@@ -52,7 +52,7 @@ export default class ProductDetail extends Component {
           />
         </LinkButton>
 
-        <span>商品详情</span>
+        <span>Description</span>
       </span>
     )
 
@@ -60,23 +60,23 @@ export default class ProductDetail extends Component {
       <Card title={title} className='product-detail'>
         <List>
           <Item>
-            <span className="left">商品名称:</span>
+            <span className="left">Product Name:</span>
             <span>{name}</span>
           </Item>
           <Item>
-            <span className="left">商品描述:</span>
+            <span className="left">Description:</span>
             <span>{desc}</span>
           </Item>
           <Item>
-            <span className="left">商品价格:</span>
-            <span>{price}元</span>
+            <span className="left">Price:</span>
+            <span>{price}$</span>
           </Item>
           <Item>
-            <span className="left">所属分类:</span>
+            <span className="left">Category:</span>
             <span>{cName1} {cName2 ? ' --> '+cName2 : ''}</span>
           </Item>
           <Item>
-            <span className="left">商品图片:</span>
+            <span className="left">Picture:</span>
             <span>
               {
                 imgs.map(img => (
@@ -91,7 +91,7 @@ export default class ProductDetail extends Component {
             </span>
           </Item>
           <Item>
-            <span className="left">商品详情:</span>
+            <span className="left">Product Detail:</span>
             <span dangerouslySetInnerHTML={{__html: detail}}>
             </span>
           </Item>

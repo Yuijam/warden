@@ -28,7 +28,7 @@ export default class home extends Component {
   updateStatus = async (productId, status) => {
     const result = await reqUpdateStatus(productId, status)
     if(result.status===0) {
-      message.success('更新商品成功')
+      message.success('Update product successfully')
       this.getProducts(this.pageNum)
     }
   }
@@ -36,21 +36,21 @@ export default class home extends Component {
   initColumns = () => {
     this.columns = [
       {
-        title: '商品名称',
+        title: 'Product Name',
         dataIndex: 'name',
       },
       {
-        title: '商品描述',
+        title: 'Description',
         dataIndex: 'desc',
       },
       {
-        title: '价格',
+        title: 'Price',
         dataIndex: 'price',
         render: (price) => '¥' + price 
       },
       {
         width: 100,
-        title: '状态',
+        title: 'Status',
         // dataIndex: 'status',
         render: (product) => {
           const {status, _id} = product
@@ -61,22 +61,22 @@ export default class home extends Component {
                 type='primary'
                 onClick={() => this.updateStatus(_id, newStatus)}
               >
-                {status===1 ? '下架' : '上架'}
+                {status===1 ? 'Remove' : 'Put on Sale'}
               </Button>
-              <span>{status===1 ? '在售' : '已下架'}</span>
+              <span>{status===1 ? 'On Sale' : 'Removed'}</span>
             </span>
           )
         }
       },
       {
         width: 100,
-        title: '操作',
+        title: 'Options',
         render: (product) => {
           return (
             <span>
               {/*将product对象使用state传递给目标路由组件*/}
-              <LinkButton onClick={() => this.props.history.push('/product/detail', {product})}>详情</LinkButton>
-              <LinkButton onClick={() => this.props.history.push('/product/addupdate', product)}>修改</LinkButton>
+              <LinkButton onClick={() => this.props.history.push('/product/detail', {product})}>Detail</LinkButton>
+              <LinkButton onClick={() => this.props.history.push('/product/addupdate', product)}>Modify</LinkButton>
             </span>
           )
         }
@@ -124,23 +124,23 @@ export default class home extends Component {
           style={{width: 150}}
           onChange={value => this.setState({searchType:value})}
         >
-          <Option value='productName'>按名称搜索</Option>
-          <Option value='productDesc'>按描述搜索</Option>
+          <Option value='productName'>Search by Name</Option>
+          <Option value='productDesc'>Search by Description</Option>
         </Select>
         <Input
-          placeholder='关键字'
+          placeholder='Key Word'
           style={{width: 150, margin: '0 15px'}}
           value={searchName}
           onChange={event => this.setState({searchName:event.target.value})}
         />
-        <Button type='primary' onClick={() => this.getProducts(1)}>搜索</Button>
+        <Button type='primary' onClick={() => this.getProducts(1)}>Search</Button>
       </span>
     )
 
     const extra = (
       <Button type='primary' onClick={() => this.props.history.push('/product/addupdate')}>
         <Icon type='plus'/>
-        添加商品
+        Add Product
       </Button>
     )
 

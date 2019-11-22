@@ -57,7 +57,7 @@ class UserForm extends PureComponent {
           )
         }
 
-        <Item label='Phone Number'>
+        <Item label='Tel'>
           {
             getFieldDecorator('phone', {
               initialValue: user.phone,
